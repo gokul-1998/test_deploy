@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Alert Button with Text-to-Speech</title>
+    <title>Alert Button with Text-to-Speech and Vibration</title>
 </head>
 <body>
     <button id="alertButton">The school bus is 2 kilometers away</button>
@@ -25,8 +25,14 @@
 
                 // Speak the sentence 5 times
                 for (let i = 0; i < 5; i++) {
-                    setTimeout(speakSentence, i * 1000); // Delay each sentence by 11 seconds
+                    setTimeout(speakSentence, i * 1000); // Delay each sentence by 1 second
                 }
+            }
+
+            // Check if the Vibration API is available
+            if ('vibrate' in navigator) {
+                // Vibrate for 500 milliseconds
+                navigator.vibrate(500);
             }
         });
     </script>

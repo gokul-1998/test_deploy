@@ -1,1 +1,34 @@
-hello madhav
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Alert Button with Text-to-Speech</title>
+</head>
+<body>
+    <button id="alertButton">The school bus is 2 kilometers away</button>
+
+    <script>
+        document.getElementById('alertButton').addEventListener('click', function() {
+            // Check if the Speech Synthesis API is available
+            if ('speechSynthesis' in window) {
+                const sentence = 'The school bus is 2 kilometers away';
+                const lang = 'en-US'; // Set the language (you can change it as needed)
+                const volume = 1; // Set the volume to maximum (1)
+
+                function speakSentence() {
+                    const speech = new SpeechSynthesisUtterance(sentence);
+                    speech.lang = lang;
+                    speech.volume = volume;
+
+                    // Speak the text
+                    window.speechSynthesis.speak(speech);
+                }
+
+                // Speak the sentence 5 times
+                for (let i = 0; i < 5; i++) {
+                    setTimeout(speakSentence, i * 1000); // Delay each sentence by 11 seconds
+                }
+            }
+        });
+    </script>
+</body>
+</html>
